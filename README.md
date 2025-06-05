@@ -77,10 +77,10 @@ The module has limited integration with MMM-Scenes2 (https://github.com/MMRIZE/M
 ## General config options
 | key  | Required | Description | Default |
 | - | - | - | - |
-| showNowClock  | no  | Show the current time | (null)  |
-| forceShow  | no  | If using MMM-pages, whether to stop rotating pages and only show this MMM-page while a timer is active | (null)  |
-| mmmPagesHiddenPageName  | no  | MMM-pages, the name of the hidden page this might be on | (null)  |
-| mmmScenes2SceneName  | no  | MMM-Scenes2, the name of the scene to play | (null)  |
+| showNowClock  | no  | Show the current time | false  |
+| forceShow  | no  | If using MMM-pages or MMM-Scenes2, whether to stop rotating pages/scenes and only show the proper page/scene while any timer is active | true  |
+| mmmPagesHiddenPageName  | no  | MMM-pages, the name of the hidden page this might be on | multicountdown  |
+| mmmScenes2SceneName  | no  | MMM-Scenes2, the name of the scene to play | scene-multicountdown  |
 
 ### Timer config options:
 
