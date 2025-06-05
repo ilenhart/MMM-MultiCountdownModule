@@ -63,11 +63,18 @@ The configuration takes a set of timers.  Each timer is responsible for a given 
 
 The timer is a progress bar that increases until the set time.  Before the time, the bar is green and changes from green, to yellow, to flashing orange as the time approaches.  After the deadline time, the bar turns red.  
 
+## Force Show/Rotation Pause
+
+Under some circumstances, you may want to configure this timer so that it is the sole module displayed on the screen and hide everything else.  This can be done with MMM-Pages or MMM-Scenes2.  Neither of these is required or expected, but this module emits the notifications needed to pause and show the page/scene if needed.  Again, this module can be used without MMM-Pages or MMM-Scenes2, this is just a helper behavior.
+
+This behavior is activated by setting forceShow = true in the configuration.
+
 ### MMM-Pages
 
 The module has limited integration with MMM-Pages (https://github.com/edward-shen/MMM-pages)  Meaning, if forceShow=true in the configuration, then this module will force MMM-pages to move to the hidden page specified (presumably containing this module) and pause MMM-pages from rotating.  
 The assumption here is that in this case, this module is in an MMM-Pages hidden page which is not normally shown.
 Effectively, if forceShow is true, and there is a timer for the current time, this module will stop everything else and just show the MMM-pages page that this module appears on.
+
 
 ### MMM-Scenes2
 
