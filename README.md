@@ -79,23 +79,23 @@ Timer config options:
 | key  | Required | Description | Default |
 | - | - | - | - |
 | displayName  | yes  | The name that will be displayed| (null)  |
-| deadlineTime  | yes | The deadline/endtime | |
+| deadlineTime  | yes | The deadline/endtime (24h format : hh:mm)| |
 | active  | no | Whether this particular timer is active or not (for easy deactivation without removing it) | false   |
 | showMinutesBefore  | yes | Minutes before the deadline time to start showing the timer | 5   |
 | hideMinutesAfter  | yes | Minutes after the deadline time to stop showing the timer | 1   |
-| warningWindowMinutes  | yes | Minutes before the bar changes from green to yellow | false   |
-| dangerWindowMinutes  | yes | Minutes before the bar starts blinking and shows in orange | false   |
+| warningWindowMinutes  | yes | Minutes before the deadlineTime where bar changes from green to yellow | false   |
+| dangerWindowMinutes  | yes | Minutes before the deadlineTime where bar starts blinking and shows in orange | false   |
 | showDaysOfWeek  | yes | Which days to show this timer on. Array of weekdays (0=Sunday, 1= Monday, etc) | false   |
 
 
 To be clear:
-If current time is within (deadlineTime - showMinutesBefore) and (deadlineTime + hideMinutesAfter) that timer will be displayed.
+* If current time is within (deadlineTime - showMinutesBefore) and (deadlineTime + hideMinutesAfter) that timer will be displayed.  If the current time is not in that window, the timer is not shown at all.
 
-Colors?
-if current time is past the deadlineTime, the timer bar will be red
-If current time is past deadlineTime - dangerWindowMinutes, the timer bar will be orange and blinking.
-If current time is past deadlineTime - warningWindowMinutes, the timer bar will be yellow.
-If current time is anything else, the timer bar will be green.
+Colors?  Moves from green to yellow to blinking orange to red over the lifetime of the timer.
+* if current time is past the deadlineTime, the timer bar will be red
+* If current time is past deadlineTime - dangerWindowMinutes, the timer bar will be orange and blinking.
+* If current time is past deadlineTime - warningWindowMinutes, the timer bar will be yellow.
+* If current time is anything else, the timer bar will be green.
 
 
 ## Contributing
