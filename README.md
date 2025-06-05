@@ -1,2 +1,96 @@
 # MMM-MultiCountdownModule
-Magic Mirror 2 - Countdown module
+
+Shows a set of configured countdown bars within specific time windows.  Inspired by a child needing some
+hints on when it was time to go to school, brush teeth, go to bed, etc.  Configuration allows for 
+the setting of windows of time where the countdown should be shown, with additional configuration
+for displaying it before or after the time.
+
+
+Intended to be shown as full screen for best effect, but doesn't have to be.
+
+## Installation
+```bash
+cd ~/MagicMirror/modules
+```
+
+```bash
+git clone https://github.com/ilenhart/MMM-MultiCountdownModule.git
+```
+
+## Example
+
+![Screenshot](example.png)
+
+
+## Configuration
+Copy the example config to your MagicMirror config file:
+
+```javascript
+
+{
+			module: "MMM-MultiCountdownModule",
+			config : {
+				showNowClock:true,
+				forceShow: false,
+				mmmPagesHiddenPageName: "multicountdown",
+				timers : [
+					{
+						displayName: "Brushed Teeth",
+						deadlineTime: "07:50",
+						active: true,
+						showMinutesBefore: 5,
+						hideMinutesAfter: 1,
+						warningWindowMinutes: 5,
+						dangerWindowMinutes: 1,
+						showDaysOfWeek: [1,2,3,4,5]
+					},
+					{
+						displayName: "Dressed for School ",
+						deadlineTime: "07:45",
+						active: true,
+						showMinutesBefore: 5,
+						hideMinutesAfter: 1,
+						warningWindowMinutes: 10,
+						dangerWindowMinutes: 2,
+						showDaysOfWeek: [1,2,3,4,5]
+					},
+				]
+			}
+		},
+```
+
+The configuration takes a set of timers.  Each timer is responsible for a given window of time and shows as a progress bar counting up to the target time and then past the time.   If there is overlap in timers, then multiple timers weill be displayed.  
+
+The timer is a progress bar that increases until the set time.  Before the time, the bar is green and changes from green, to yellow, to flashing orange as the time approaches.  After the deadline time, the bar turns red.  
+
+The module has limited integration with MMM-Pages.  Meaning, if forceShow=true in the configuration, then this module will force MMM-pages to move to the hidden page specified (presumably containing this module) and stop rotating through pages.  
+Effectively, if forceShow is true, and there is a timer for the current time, this module will stop everything else and just show the MMM-pages page that this module appears on.
+
+Otherwise, this module acts like any other module.
+
+General config options
+| key  | Required | Description | Default |
+| - | - | - | - |
+| showNowClock  | no  | Show the current time | (null)  |
+| forceShow  | no  | If using MMM-pages, whether to stop rotating pages and only show this one while a timer is active | (null)  |
+| mmmPagesHiddenPageName  | no  | MMM-pages, the name of the hidden page this might be on | (null)  |
+
+Timer config options:
+
+| key  | Required | Description | Default |
+| - | - | - | - |
+| displayName  | yes  | The name that will be displayed| (null)  |
+| deadlineTime  | yes | The deadline/endtime | |
+| active  | no | Whether this particular timer is active or not | false   |
+| showMinutesBefore  | yes | Minutes before the deadline time to start showing the timer | 5   |
+| hideMinutesAfter  | yes | Minutes after the deadline time to stop showing the timer | 1   |
+| warningWindowMinutes  | yes | Minutes before the bar changes from green to yellow | false   |
+| dangerWindowMinutes  | yes | Minutes before the bar starts blinking and shows in orange | false   |
+| showDaysOfWeek  | yes | Which days to show this timer on. Array of weekdays (0=Sunday, 1= Monday, etc) | false   |
+
+
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
