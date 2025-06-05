@@ -62,7 +62,8 @@ The configuration takes a set of timers.  Each timer is responsible for a given 
 
 The timer is a progress bar that increases until the set time.  Before the time, the bar is green and changes from green, to yellow, to flashing orange as the time approaches.  After the deadline time, the bar turns red.  
 
-The module has limited integration with MMM-Pages.  Meaning, if forceShow=true in the configuration, then this module will force MMM-pages to move to the hidden page specified (presumably containing this module) and stop rotating through pages.  
+The module has limited integration with MMM-Pages.  Meaning, if forceShow=true in the configuration, then this module will force MMM-pages to move to the hidden page specified (presumably containing this module) and pause MMM-pages from rotating.  
+The assumption here is that in this case, this module is in an MMM-Pages hidden page which is not normally shown.
 Effectively, if forceShow is true, and there is a timer for the current time, this module will stop everything else and just show the MMM-pages page that this module appears on.
 
 Otherwise, this module acts like any other module.
@@ -81,11 +82,11 @@ Timer config options:
 | displayName  | yes  | The name that will be displayed| (null)  |
 | deadlineTime  | yes | The deadline/endtime (24h format : hh:mm)| |
 | active  | no | Whether this particular timer is active or not (for easy deactivation without removing it) | false   |
-| showMinutesBefore  | yes | Minutes before the deadline time to start showing the timer | 5   |
-| hideMinutesAfter  | yes | Minutes after the deadline time to stop showing the timer | 1   |
-| warningWindowMinutes  | yes | Minutes before the deadlineTime where bar changes from green to yellow | false   |
-| dangerWindowMinutes  | yes | Minutes before the deadlineTime where bar starts blinking and shows in orange | false   |
-| showDaysOfWeek  | yes | Which days to show this timer on. Array of weekdays (0=Sunday, 1= Monday, etc) | false   |
+| showMinutesBefore  | yes | Minutes before the deadline time to start showing the timer | 30   |
+| hideMinutesAfter  | yes | Minutes after the deadline time to stop showing the timer | 5   |
+| warningWindowMinutes  | yes | Minutes before the deadlineTime where bar changes from green to yellow | 10   |
+| dangerWindowMinutes  | yes | Minutes before the deadlineTime where bar starts blinking and shows in orange | 5   |
+| showDaysOfWeek  | yes | Which days to show this timer on. Array of weekdays (0=Sunday, 1= Monday, etc) | [0,1,2,3,4,5,6]  (all days) |
 
 
 To be clear:
