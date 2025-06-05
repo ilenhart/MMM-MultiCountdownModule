@@ -5,7 +5,6 @@ hints on when it was time to go to school, brush teeth, go to bed, etc.  Configu
 the setting of windows of time where the countdown should be shown, with additional configuration
 for displaying it before or after the time.
 
-
 Intended to be shown as full screen for best effect, but doesn't have to be.
 
 ## Installation
@@ -72,7 +71,7 @@ General config options
 | key  | Required | Description | Default |
 | - | - | - | - |
 | showNowClock  | no  | Show the current time | (null)  |
-| forceShow  | no  | If using MMM-pages, whether to stop rotating pages and only show this one while a timer is active | (null)  |
+| forceShow  | no  | If using MMM-pages, whether to stop rotating pages and only show this MMM-page while a timer is active | (null)  |
 | mmmPagesHiddenPageName  | no  | MMM-pages, the name of the hidden page this might be on | (null)  |
 
 Timer config options:
@@ -81,12 +80,22 @@ Timer config options:
 | - | - | - | - |
 | displayName  | yes  | The name that will be displayed| (null)  |
 | deadlineTime  | yes | The deadline/endtime | |
-| active  | no | Whether this particular timer is active or not | false   |
+| active  | no | Whether this particular timer is active or not (for easy deactivation without removing it) | false   |
 | showMinutesBefore  | yes | Minutes before the deadline time to start showing the timer | 5   |
 | hideMinutesAfter  | yes | Minutes after the deadline time to stop showing the timer | 1   |
 | warningWindowMinutes  | yes | Minutes before the bar changes from green to yellow | false   |
 | dangerWindowMinutes  | yes | Minutes before the bar starts blinking and shows in orange | false   |
 | showDaysOfWeek  | yes | Which days to show this timer on. Array of weekdays (0=Sunday, 1= Monday, etc) | false   |
+
+
+To be clear:
+If current time is within (deadlineTime - showMinutesBefore) and (deadlineTime + hideMinutesAfter) that timer will be displayed.
+
+Colors?
+if current time is past the deadlineTime, the timer bar will be red
+If current time is past deadlineTime - dangerWindowMinutes, the timer bar will be orange and blinking.
+If current time is past deadlineTime - warningWindowMinutes, the timer bar will be yellow.
+If current time is anything else, the timer bar will be green.
 
 
 ## Contributing
