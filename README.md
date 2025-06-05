@@ -89,11 +89,11 @@ The module has limited integration with MMM-Scenes2 (https://github.com/MMRIZE/M
 | displayName  | yes  | The name that will be displayed| (null)  |
 | deadlineTime  | yes | The deadline/endtime (24h format : hh:mm)| |
 | active  | no | Whether this particular timer is active or not (for easy deactivation without removing it) | false   |
-| showMinutesBefore  | yes | Minutes before the deadline time to start showing the timer | 30   |
-| hideMinutesAfter  | yes | Minutes after the deadline time to stop showing the timer | 5   |
-| warningWindowMinutes  | yes | Minutes before the deadlineTime where bar changes from green to yellow | 10   |
-| dangerWindowMinutes  | yes | Minutes before the deadlineTime where bar starts blinking and shows in orange | 5   |
-| showDaysOfWeek  | yes | Which days to show this timer on. Array of weekdays (0=Sunday, 1= Monday, etc) | [0,1,2,3,4,5,6]  (all days) |
+| showMinutesBefore  | no | Minutes before the deadline time to start showing the timer | 30   |
+| hideMinutesAfter  | no | Minutes after the deadline time to stop showing the timer | 5   |
+| warningWindowMinutes  | no | Minutes before the deadlineTime where bar changes from green to yellow | 10   |
+| dangerWindowMinutes  | no | Minutes before the deadlineTime where bar starts blinking and shows in orange | 5   |
+| showDaysOfWeek  | no | Which days to show this timer on. Array of weekdays (0=Sunday, 1= Monday, etc) | [0,1,2,3,4,5,6]  (all days) |
 
 
 To be clear:
