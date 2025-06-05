@@ -1,0 +1,37 @@
+
+.Timer_BAR_BEFORE {
+    position:absolute;
+    width:400px;
+    height:40px;
+    top:0;
+    left:0;
+    z-index:9999;
+    background-color: rgba(50, 189, 57, 0.5);
+  }
+
+.Timer_BAR_AFTER {
+    position:absolute;
+    width:400px;
+    height:40px;
+    top:0;
+    left:0;
+    z-index:9999;
+    background-color: rgba(189, 93, 55, 0.5);
+  }
+
+  .blink-class {
+    animation: blink 1s linear infinite
+  }
+
+  @keyframes blink {
+    25% {
+      opacity: .9;
+    }
+    50% {
+      opacity:.5;
+    }
+    75% {
+      opacity: 0.9;
+    }
+  }
+
