@@ -71,10 +71,10 @@ Effectively, if forceShow is true, and there is a timer for the current time, th
 
 ### MMM-Scenes2
 
-The module has limited integration with MMM-Scenes2 (https://github.com/MMRIZE/MMM-Scenes2).  If forceShow=true in the configuration, this module will play the scene specified by mmmScenes2SceneName and will pause the rotation of MMM-Scenes2.  In order to normally "hide" these timers, you will need to specify the proper previous/next of the scenes in the MMM-Scenes2 configuration.  Basically, tell it to normally skip the scene containing this timer module, and then this module will force the "hidden" scene to play
+The module has limited integration with MMM-Scenes2 (https://github.com/MMRIZE/MMM-Scenes2).  If forceShow=true in the configuration, this module will play the scene specified by mmmScenes2SceneName and will pause the rotation of MMM-Scenes2.  In order to normally "hide" these timers, you will need to specify the proper previous/next of the scenes in the MMM-Scenes2 configuration.  Basically, tell it to normally skip the scene containing this timer module, and then this module will force the "hidden" scene to play while pausing rotation.
 
 
-General config options
+## General config options
 | key  | Required | Description | Default |
 | - | - | - | - |
 | showNowClock  | no  | Show the current time | (null)  |
@@ -82,7 +82,7 @@ General config options
 | mmmPagesHiddenPageName  | no  | MMM-pages, the name of the hidden page this might be on | (null)  |
 | mmmScenes2SceneName  | no  | MMM-Scenes2, the name of the scene to play | (null)  |
 
-Timer config options:
+### Timer config options:
 
 | key  | Required | Description | Default |
 | - | - | - | - |
