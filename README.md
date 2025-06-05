@@ -32,6 +32,7 @@ Copy the example config to your MagicMirror config file:
 				showNowClock:true,
 				forceShow: false,
 				mmmPagesHiddenPageName: "multicountdown",
+                mmmScenes2SceneName : "scene-timers",
 				timers : [
 					{
 						displayName: "Brushed Teeth",
@@ -62,11 +63,16 @@ The configuration takes a set of timers.  Each timer is responsible for a given 
 
 The timer is a progress bar that increases until the set time.  Before the time, the bar is green and changes from green, to yellow, to flashing orange as the time approaches.  After the deadline time, the bar turns red.  
 
-The module has limited integration with MMM-Pages.  Meaning, if forceShow=true in the configuration, then this module will force MMM-pages to move to the hidden page specified (presumably containing this module) and pause MMM-pages from rotating.  
+### MMM-Pages
+
+The module has limited integration with MMM-Pages (https://github.com/edward-shen/MMM-pages)  Meaning, if forceShow=true in the configuration, then this module will force MMM-pages to move to the hidden page specified (presumably containing this module) and pause MMM-pages from rotating.  
 The assumption here is that in this case, this module is in an MMM-Pages hidden page which is not normally shown.
 Effectively, if forceShow is true, and there is a timer for the current time, this module will stop everything else and just show the MMM-pages page that this module appears on.
 
-Otherwise, this module acts like any other module.
+### MMM-Scenes2
+
+The module has limited integration with MMM-Scenes2 (https://github.com/MMRIZE/MMM-Scenes2).  If forceShow=true in the configuration, this module will play the scene specified by mmmScenes2SceneName and will pause the rotation of MMM-Scenes2.  In order to normally "hide" these timers, you will need to specify the proper previous/next of the scenes in the MMM-Scenes2 configuration.  Basically, tell it to normally skip the scene containing this timer module, and then this module will force the "hidden" scene to play
+
 
 General config options
 | key  | Required | Description | Default |
@@ -74,6 +80,7 @@ General config options
 | showNowClock  | no  | Show the current time | (null)  |
 | forceShow  | no  | If using MMM-pages, whether to stop rotating pages and only show this MMM-page while a timer is active | (null)  |
 | mmmPagesHiddenPageName  | no  | MMM-pages, the name of the hidden page this might be on | (null)  |
+| mmmScenes2SceneName  | no  | MMM-Scenes2, the name of the scene to play | (null)  |
 
 Timer config options:
 

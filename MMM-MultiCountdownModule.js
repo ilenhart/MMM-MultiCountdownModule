@@ -5,6 +5,7 @@ Module.register("MMM-MultiCountdownModule", {
       showNowClock:false,
       forceShow : true,
       mmmPagesHiddenPageName: "multicountdown",
+      mmmScenes2SceneName : "scene-multicountdown",
       timers : [
         {
             displayName: "",
@@ -232,11 +233,24 @@ Module.register("MMM-MultiCountdownModule", {
           
           if (config.forceShow) {
             //Pause rotation // PAUSE_ROTATION
-            this.sendNotification("PAUSE_ROTATION");
+            this.sendNotification("PAUSE_ROTATION"); //MMM-Pages
+
+            //MMM-Scenes2
+            this.sendNotification("SCENES_PAUSE", {
+              callback: (result) => { console.log(result.status) }
+            })
+
           }
   
           //Show this hidden page // SHOW_HIDDEN_PAGE (string)
-          this.sendNotification("SHOW_HIDDEN_PAGE", config.mmmPagesHiddenPageName);
+          //MMM-Pages
+          this.sendNotification("SHOW_HIDDEN_PAGE", config.mmmPagesHiddenPageName); //MMM-Pages
+          
+          //MMM-Scenes2
+          this.sendNotification("SCENES_PLAY", {
+            callback: (result) => { console.log(result.status) },
+            scene: config.mmmScenes2SceneName
+          })
 
           this.active = true;
           console.log("Multicountdown is ACTIVE.");
@@ -252,10 +266,22 @@ Module.register("MMM-MultiCountdownModule", {
           this.endTimeout();
 
           //Hide this hidden page //LEAVE_HIDDEN_PAGE
+          //MMM-Pages
           this.sendNotification("LEAVE_HIDDEN_PAGE");
+
           //Resume rotation // RESUME_ROTATION
+          //MMM-Pages
           this.sendNotification("RESUME_ROTATION");
           this.sendNotification("PAGE_CHANGED", 0);
+
+          //MMM-Scenes2
+          this.sendNotification("SCENES_PLAY", {
+            callback: (result) => { console.log(result.status) },
+            scene: 0
+          })
+          this.sendNotification("SCENES_RESUME", {
+            callback: (result) => { console.log(result.status) }
+          })
           
           this.active = false;
           console.log("Multicountdown is INACTIVE.");
