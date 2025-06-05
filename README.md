@@ -27,36 +27,36 @@ Copy the example config to your MagicMirror config file:
 ```javascript
 
 {
-			module: "MMM-MultiCountdownModule",
-			config : {
-				showNowClock:true,
-				forceShow: false,
-				mmmPagesHiddenPageName: "multicountdown",
-                mmmScenes2SceneName : "scene-timers",
-				timers : [
-					{
-						displayName: "Brushed Teeth",
-						deadlineTime: "07:50",
-						active: true,
-						showMinutesBefore: 5,
-						hideMinutesAfter: 1,
-						warningWindowMinutes: 5,
-						dangerWindowMinutes: 1,
-						showDaysOfWeek: [1,2,3,4,5]
-					},
-					{
-						displayName: "Dressed for School ",
-						deadlineTime: "07:45",
-						active: true,
-						showMinutesBefore: 5,
-						hideMinutesAfter: 1,
-						warningWindowMinutes: 10,
-						dangerWindowMinutes: 2,
-						showDaysOfWeek: [1,2,3,4,5]
-					},
-				]
-			}
-		},
+    module: "MMM-MultiCountdownModule",
+    config : {
+        showNowClock:true,
+        forceShow: false,
+        mmmPagesHiddenPageName: "multicountdown",
+        mmmScenes2SceneName : "scene-timers",
+        timers : [
+            {
+                displayName: "Brushed Teeth",
+                deadlineTime: "07:50",
+                active: true,
+                showMinutesBefore: 5,
+                hideMinutesAfter: 1,
+                warningWindowMinutes: 5,
+                dangerWindowMinutes: 1,
+                showDaysOfWeek: [1,2,3,4,5]
+            },
+            {
+                displayName: "Dressed for School ",
+                deadlineTime: "07:45",
+                active: true,
+                showMinutesBefore: 5,
+                hideMinutesAfter: 1,
+                warningWindowMinutes: 10,
+                dangerWindowMinutes: 2,
+                showDaysOfWeek: [1,2,3,4,5]
+            },
+        ]
+    }
+},
 ```
 
 The configuration takes a set of timers.  Each timer is responsible for a given window of time and shows as a progress bar counting up to the target time and then past the time.   If there is overlap in timers, then multiple timers weill be displayed.  
@@ -71,7 +71,7 @@ Effectively, if forceShow is true, and there is a timer for the current time, th
 
 ### MMM-Scenes2
 
-The module has limited integration with MMM-Scenes2 (https://github.com/MMRIZE/MMM-Scenes2).  If forceShow=true in the configuration, this module will play the scene specified by mmmScenes2SceneName and will pause the rotation of MMM-Scenes2.  In order to normally "hide" these timers, you will need to specify the proper previous/next of the scenes in the MMM-Scenes2 configuration.  Basically, tell it to normally skip the scene containing this timer module, and then this module will force the "hidden" scene to play while pausing rotation.
+The module has limited integration with MMM-Scenes2 (https://github.com/MMRIZE/MMM-Scenes2).  If forceShow=true in the configuration, this module will play the scene specified by mmmScenes2SceneName and will pause the rotation of MMM-Scenes2.  In order to normally "hide" these timers, you will need to specify the proper previous/next of the scenes in the MMM-Scenes2 configuration.  Basically, you must configure MMM-Scenes2 to normally skip the scene containing this timer module, and then this module will force the "hidden" scene to play while pausing rotation.  When resuming (no timers active), the normal rotation should restart.
 
 
 ## General config options
